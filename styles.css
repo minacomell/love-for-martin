@@ -94,57 +94,6 @@ button { cursor: pointer; }
 .login-card button:hover, #nextButton:hover, #againButton:hover { transform: translateY(-3px); background: var(--deep-pink); }
 .error { min-height: 1.2rem; margin: .6rem 0 0; color: var(--deep-pink); font-size: .75rem; }
 
-.scan-content { text-align: center; }
-.scan-content p { margin: 0 0 2rem; font-family: "Playfair Display", serif; font-size: 2rem; font-style: italic; }
-.scan-content small { display: block; margin-top: 1.5rem; color: #a97989; }
-
-.qr-heart {
-  position: relative;
-  width: 230px;
-  height: 210px;
-  margin: auto;
-  padding: 0;
-  overflow: hidden;
-  background: transparent;
-  filter: drop-shadow(0 18px 22px rgba(217, 68, 117, .2));
-  clip-path: polygon(50% 100%, 43% 92%, 32% 82%, 21% 71%, 12% 58%, 7% 43%, 8% 28%, 15% 16%, 26% 10%, 38% 12%, 50% 23%, 62% 12%, 74% 10%, 85% 16%, 92% 28%, 93% 43%, 88% 58%, 79% 71%, 68% 82%, 57% 92%);
-}
-
-.qr-pixels {
-  position: absolute;
-  inset: 0;
-  background-color: var(--pink);
-  background-image:
-    linear-gradient(90deg, transparent 50%, var(--cream) 50%),
-    linear-gradient(transparent 50%, var(--cream) 50%);
-  background-size: 22px 22px;
-}
-
-.qr-pixels::before, .qr-pixels::after {
-  content: "";
-  position: absolute;
-  width: 54px;
-  height: 54px;
-  top: 38px;
-  border: 9px solid var(--cream);
-  background: var(--deep-pink);
-  box-shadow: inset 0 0 0 8px var(--pink);
-}
-.qr-pixels::before { left: 42px; }
-.qr-pixels::after { right: 42px; }
-
-.scan-continue {
-  display: block;
-  margin: 1.4rem auto 0;
-  padding: .85rem 1.8rem;
-  color: white;
-  background: var(--pink);
-  border: 0;
-  border-radius: 99px;
-  transition: .25s ease;
-}
-.scan-continue:hover { transform: translateY(-3px); background: var(--deep-pink); }
-
 .letter-card {
   width: min(650px, 100%);
   padding: clamp(2rem, 7vw, 5rem);
@@ -173,6 +122,7 @@ button { cursor: pointer; }
 }
 
 #editHint { display: block; margin-top: 1rem; color: #bb98a4; font-size: .65rem; }
+#saveStatus { color: var(--deep-pink); font-weight: 600; }
 
 .question-content { width: min(650px, 100%); text-align: center; }
 .question-content h2, .yay-content h2 {
@@ -187,6 +137,7 @@ button { cursor: pointer; }
 .answers button { border: 0; border-radius: 99px; transition: transform .35s ease, padding .35s ease, font-size .35s ease; }
 .yes { padding: 1rem 2rem; color: white; background: var(--pink); font-weight: 600; }
 .no { padding: .85rem 1.5rem; color: #a87888; background: white; border: 1px solid var(--soft-pink) !important; }
+.no.gone { display: none; }
 #noMessage { display: block; min-height: 1rem; color: #b98797; }
 
 .yay-content { text-align: center; }

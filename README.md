@@ -8,3 +8,5 @@ directly with GitHub Pages.
 Public URL after GitHub Pages is enabled:
 
 `https://minacomell.github.io/love-for-martin/`
+
+Scan `assets/love-qr.png` to open the public website from a phone.

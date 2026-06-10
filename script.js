@@ -2,10 +2,10 @@ const screens = [...document.querySelectorAll(".screen")];
 const nameForm = document.querySelector("#nameForm");
 const nameInput = document.querySelector("#name");
 const loginError = document.querySelector("#loginError");
-const scanContinue = document.querySelector("#scanContinue");
 const letterTitle = document.querySelector("#letterTitle");
 const editableMessage = document.querySelector("#editableMessage");
 const editHint = document.querySelector("#editHint");
+const saveStatus = document.querySelector("#saveStatus");
 const nextButton = document.querySelector("#nextButton");
 const yesButton = document.querySelector("#yesButton");
 const noButton = document.querySelector("#noButton");
@@ -16,6 +16,7 @@ const hearts = document.querySelector("#hearts");
 let currentUser = "";
 let noCount = 0;
 let heartTimer;
+let saveTimer;
 
 function showScreen(id) {
   screens.forEach((screen) => {
@@ -47,8 +48,15 @@ function heartBurst() {
   for (let i = 0; i < 45; i += 1) setTimeout(() => createHeart(true), i * 35);
 }
 
+function loadMessage() {
+  const savedMessage = localStorage.getItem("minaMessageForMartin");
+  if (savedMessage) editableMessage.innerText = savedMessage;
+}
+
 function saveMessage() {
-  localStorage.setItem("minaMessageForMartin", editableMessage.innerText.trim());
+  const message = editableMessage.innerText.trim();
+  localStorage.setItem("minaMessageForMartin", message);
+  saveStatus.textContent = "saved on this device";
 }
 
 nameForm.addEventListener("submit", (event) => {
@@ -63,23 +71,21 @@ nameForm.addEventListener("submit", (event) => {
 
   currentUser = name;
   loginError.textContent = "";
-  showScreen("scanner");
-});
-
-scanContinue.addEventListener("click", () => {
   letterTitle.textContent = currentUser === "mina" ? "Hi, Mina." : "Hi, Martin.";
-  const savedMessage = localStorage.getItem("minaMessageForMartin");
-  if (savedMessage) editableMessage.innerText = savedMessage;
-
   const isMina = currentUser === "mina";
   editableMessage.contentEditable = String(isMina);
   editHint.hidden = !isMina;
   showScreen("letter");
   startHearts();
   heartBurst();
+  loadMessage();
 });
 
-editableMessage.addEventListener("input", saveMessage);
+editableMessage.addEventListener("input", () => {
+  clearTimeout(saveTimer);
+  saveStatus.textContent = "editing...";
+  saveTimer = setTimeout(saveMessage, 700);
+});
 nextButton.addEventListener("click", () => showScreen("question"));
 
 noButton.addEventListener("click", () => {
@@ -89,10 +95,8 @@ noButton.addEventListener("click", () => {
   noMessage.textContent = ["are you sure?", "really really sure?", "last chance..."][noCount - 1] || "";
 
   if (noCount >= 3) {
-    noButton.textContent = "yes ♥";
-    noButton.classList.remove("no");
-    noButton.classList.add("yes");
-    noButton.addEventListener("click", celebrate, { once: true });
+    noButton.classList.add("gone");
+    noMessage.textContent = "okay, only one answer left ♥";
   }
 });
 
