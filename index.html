@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff5f7">
+  <title>For Martin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="hearts" class="hearts" aria-hidden="true"></div>
+
+  <main>
+    <section id="login" class="screen active">
+      <form id="nameForm" class="login-card">
+        <div class="mini-heart">♥</div>
+        <label for="name">write down your name</label>
+        <input id="name" name="name" autocomplete="off" maxlength="20" required>
+        <p id="loginError" class="error" aria-live="polite"></p>
+        <button type="submit">continue</button>
+      </form>
+    </section>
+
+    <section id="scanner" class="screen" aria-hidden="true">
+      <div class="scan-content">
+        <p>your love code</p>
+        <div class="qr-heart" aria-label="Heart-shaped love code">
+          <span class="qr-pixels"></span>
+        </div>
+        <small>only martin & mina can enter</small>
+        <button id="scanContinue" class="scan-continue" type="button">continue ♥</button>
+      </div>
+    </section>
+
+    <section id="letter" class="screen" aria-hidden="true">
+      <div class="letter-card">
+        <span class="page-label">a little note for you</span>
+        <h1 id="letterTitle">Hi, Martin.</h1>
+        <p id="editableMessage">I made this tiny place because there are some things I still want you to know. You make ordinary days feel a little warmer, and I hope this note makes you smile.</p>
+        <small id="editHint">logged in as Mina · tap the message to edit</small>
+        <button id="nextButton" type="button">next ♥</button>
+      </div>
+    </section>
+
+    <section id="question" class="screen" aria-hidden="true">
+      <div class="question-content">
+        <h2>I miss u<br><em>so much.</em></h2>
+        <p>do u miss me too?</p>
+        <div class="answers">
+          <button id="yesButton" class="yes" type="button">yes ♥</button>
+          <button id="noButton" class="no" type="button">no</button>
+        </div>
+        <small id="noMessage"></small>
+      </div>
+    </section>
+
+    <section id="yay" class="screen" aria-hidden="true">
+      <div class="yay-content">
+        <div class="cute-face">
+          <span class="eye left"></span><span class="eye right"></span>
+          <span class="smile"></span>
+          <span class="cheek left"></span><span class="cheek right"></span>
+        </div>
+        <h2>yeayyy!</h2>
+        <p>i miss you more, martin ♥</p>
+        <button id="againButton" type="button">again?</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
