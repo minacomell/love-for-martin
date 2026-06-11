@@ -3,41 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff5f7">
+  <meta name="theme-color" content="#080204">
   <title>For Martin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
   <div id="hearts" class="hearts" aria-hidden="true"></div>
 
   <main>
     <section id="login" class="screen active">
-      <form id="nameForm" class="login-card">
+      <form id="nameForm" class="glass-card login-card">
         <div class="mini-heart">♥</div>
         <label for="name">write down your name</label>
         <input id="name" name="name" autocomplete="off" maxlength="20" required>
+
+        <div id="passwordWrap" class="password-wrap" hidden>
+          <label for="password">admin password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password">
+        </div>
+
         <p id="loginError" class="error" aria-live="polite"></p>
         <button type="submit">continue</button>
       </form>
     </section>
 
     <section id="letter" class="screen" aria-hidden="true">
-      <div class="letter-card">
+      <div class="glass-card letter-card">
         <span class="page-label">a little note for you</span>
         <h1 id="letterTitle">Hi, Martin.</h1>
         <p id="editableMessage">I made this tiny place because there are some things I still want you to know. You make ordinary days feel a little warmer, and I hope this note makes you smile.</p>
-        <small id="editHint">logged in as Mina · tap the message to edit · <span id="saveStatus">saved</span></small>
+        <small id="editHint">logged in as Mina · tap the text to edit · <span id="saveStatus">saved</span></small>
         <button id="nextButton" type="button">next ♥</button>
       </div>
     </section>
 
+    <section id="music" class="screen" aria-hidden="true">
+      <div class="music-layout">
+        <div class="lyric-panel glass-card">
+          <span class="page-label">our song</span>
+          <button id="musicButton" class="music-button" type="button">play music ♥</button>
+          <div id="lyrics" class="lyrics" aria-live="polite"></div>
+          <small>Put your MP3 at <strong>assets/song.mp3</strong></small>
+          <button id="musicNextButton" type="button">next</button>
+        </div>
+
+        <div class="photo-panel">
+          <img id="slideshow" src="assets/photos/photo1.jpg" alt="A memory of us">
+          <div class="photo-placeholder">
+            <span>add photos to</span>
+            <strong>assets/photos/</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="question" class="screen" aria-hidden="true">
-      <div class="question-content">
-        <h2>I miss u<br><em>so much.</em></h2>
-        <p>do u miss me too?</p>
+      <div class="question-content glass-card">
+        <h2 id="questionTitle">I miss u<br><em>so much.</em></h2>
+        <p id="questionText">do u miss me too?</p>
+
+        <div id="questionEditor" class="question-editor" hidden>
+          <label for="questionTitleInput">big text</label>
+          <input id="questionTitleInput" value="I miss u so much.">
+          <label for="questionTextInput">question</label>
+          <input id="questionTextInput" value="do u miss me too?">
+        </div>
+
         <div class="answers">
           <button id="yesButton" class="yes" type="button">yes ♥</button>
           <button id="noButton" class="no" type="button">no</button>
@@ -47,18 +83,22 @@
     </section>
 
     <section id="yay" class="screen" aria-hidden="true">
-      <div class="yay-content">
+      <div class="yay-content glass-card">
         <div class="cute-face">
           <span class="eye left"></span><span class="eye right"></span>
           <span class="smile"></span>
           <span class="cheek left"></span><span class="cheek right"></span>
         </div>
         <h2>yeayyy!</h2>
-        <p>i miss you more, martin ♥</p>
+        <p id="yayText">i miss you more, martin ♥</p>
         <button id="againButton" type="button">again?</button>
       </div>
     </section>
   </main>
+
+  <audio id="song" loop preload="metadata">
+    <source src="assets/song.mp3" type="audio/mpeg">
+  </audio>
 
   <script src="script.js"></script>
 </body>
